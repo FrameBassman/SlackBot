@@ -83,10 +83,13 @@
                 var status = json["fields"]["status"]["name"].Value<string>();
                 var assegnee = json["fields"]["assignee"]["displayName"].Value<string>();
                 result = new StringBuilder()
+                    .Append(">>>")
+                    .Append("```")
                     .AppendLine($"Issue {jiraUrl}/browse/{issue.ToUpper()}")
                     .Append("Title: ").AppendLine(summary)
                     .Append("Status: ").AppendLine(status)
                     .Append("Assignee: ").Append(assegnee)
+                    .Append("```")
                     .ToString();
             }
 

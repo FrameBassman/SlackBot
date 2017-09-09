@@ -1,8 +1,8 @@
 FROM microsoft/dotnet:latest
 
-COPY ./SetWalletBot.Presentation.Slack /app
+COPY . /app
 
-WORKDIR /app
+WORKDIR /app/SetWalletBot.Presentation.Slack
 
 RUN ["dotnet", "restore"]
 
