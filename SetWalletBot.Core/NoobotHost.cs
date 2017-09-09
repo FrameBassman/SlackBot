@@ -19,10 +19,10 @@ namespace SetWalletBot.Core
             _configuration = new ExampleConfiguration();
         }
 
-        public void Start()
+        public void Start(ILog log)
         {
-            //IContainerFactory containerFactory = new ContainerFactory(_configuration, _configReader, LogManager.GetLogger(GetType()));
-            IContainerFactory containerFactory = new ContainerFactory(_configuration, _configReader);
+            IContainerFactory containerFactory = new ContainerFactory(_configuration, _configReader, log);
+            //IContainerFactory containerFactory = new ContainerFactory(_configuration, _configReader);
             INoobotContainer container = containerFactory.CreateContainer();
             _noobotCore = container.GetNoobotCore();
 

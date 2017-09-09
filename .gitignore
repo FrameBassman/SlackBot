@@ -271,3 +271,4 @@ __pycache__/
 # tools/
 AwesomeApp\wwwroot\lib\*
 .vscode/
+appsettings.Production.json

@@ -10,5 +10,6 @@
     <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.0.0" />
     <PackageReference Include="Noobot.Core" Version="3.0.0" />
     <PackageReference Include="Noobot.Toolbox" Version="3.0.0" />
+    <PackageReference Include="Common.Logging" Version="3.4.1" />
   </ItemGroup>
 </Project>

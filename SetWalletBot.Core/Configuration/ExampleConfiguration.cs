@@ -9,13 +9,13 @@ namespace SetWalletBot.Core.Configuration
         public ExampleConfiguration()
         {
             UseMiddleware<WelcomeMiddleware>();
-            UseMiddleware<JokeMiddleware>();
-            UseMiddleware<CalculatorMiddleware>();
-            UseMiddleware<FlickrMiddleware>();
-            UseMiddleware<ScheduleMiddleware>();
+//            UseMiddleware<JokeMiddleware>();
+//            UseMiddleware<CalculatorMiddleware>();
+//            UseMiddleware<FlickrMiddleware>();
+//            UseMiddleware<ScheduleMiddleware>();
 
-            UsePlugin<JsonStoragePlugin>();
-            UsePlugin<SchedulePlugin>();
+            //UsePlugin<JsonStoragePlugin>();
+            //UsePlugin<SchedulePlugin>();
         }
     }
 }

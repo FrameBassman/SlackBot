@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using System;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json.Linq;
 using Noobot.Core.Configuration;
 
@@ -7,7 +8,7 @@ namespace SetWalletBot.Core.Configuration
     public class CustomConfigReader : IConfigReader
     {
         private IConfigurationSection _configurationSection;
-        private const string SLACKAPI_CONFIGVALUE = "slack:apiTocken";
+        private const string SLACKAPI_CONFIGVALUE = "slack:apiToken";
         
         public CustomConfigReader(IConfigurationSection configSection)
         {
@@ -16,10 +17,10 @@ namespace SetWalletBot.Core.Configuration
         
         public T GetConfigEntry<T>(string entryName)
         {
-            return JObject.Parse(_configurationSection[entryName]).Value<T>();
+            throw new NotImplementedException();
         }
 
-        public string SlackApiKey => GetConfigEntry<string>(SLACKAPI_CONFIGVALUE);
+        public string SlackApiKey => _configurationSection[SLACKAPI_CONFIGVALUE];
         public bool HelpEnabled { get; set; } = true;
         public bool StatsEnabled { get; set; } = true;
         public bool AboutEnabled { get; set; } = true;

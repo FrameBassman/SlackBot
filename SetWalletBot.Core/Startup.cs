@@ -1,8 +1,11 @@
 ﻿using System.IO;
+using Common.Logging;
+using Common.Logging.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using SetWalletBot.Core.Configuration;
 
 namespace SetWalletBot.Core
@@ -16,9 +19,16 @@ namespace SetWalletBot.Core
             // Set up configuration sources.
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+                .AddEnvironmentVariables();
 
             Configuration = builder.Build();
+            
+            
+            var logConfiguration = new LogConfiguration();
+            Configuration.GetSection("LogConfiguration").Bind(logConfiguration);
+            LogManager.Configure(logConfiguration);
         }
         
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -26,24 +36,25 @@ namespace SetWalletBot.Core
         public void ConfigureServices(IServiceCollection services)
         {
             // Adds services required for using options.
-            services.AddOptions();
+            //services.AddOptions();
 
             // Register the IConfiguration instance which MyOptions binds against.
             //services.Configure<MyOptions>(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IApplicationLifetime applicationLifetime, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IApplicationLifetime applicationLifetime, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            loggerFactory.AddConsole();
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
 
             
-            
             var noobHost = new NoobotHost(new CustomConfigReader(Configuration.GetSection("Bot")));
-            applicationLifetime.ApplicationStarted.Register(noobHost.Start);
+            applicationLifetime.ApplicationStarted.Register(() => noobHost.Start(LogManager.GetLogger<Startup>()));
             applicationLifetime.ApplicationStopping.Register(noobHost.Stop);
         }
     }
