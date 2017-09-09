@@ -52,7 +52,7 @@ namespace SetWalletBot.Presentation.Slack
             }
 
             
-            var noobHost = new NoobotHost(new CustomConfigReader(Configuration.GetSection("Bot")));
+            var noobHost = new NoobotHost(new DotnetCoreConfigReader(Configuration.GetSection("Bot")));
             applicationLifetime.ApplicationStarted.Register(() => noobHost.Start(LogManager.GetLogger<Startup>()));
             applicationLifetime.ApplicationStopping.Register(noobHost.Stop);
         }

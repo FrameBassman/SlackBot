@@ -3,12 +3,12 @@ using Noobot.Core.Configuration;
 
 namespace SetWalletBot.Presentation.Slack.Configuration
 {
-    public class CustomConfigReader : IConfigReader
+    public class DotnetCoreConfigReader : IConfigReader
     {
         private readonly IConfigurationSection _configurationSection;
         private const string SlackApiConfigValue = "slack:apiToken";
         
-        public CustomConfigReader(IConfigurationSection configSection)
+        public DotnetCoreConfigReader(IConfigurationSection configSection)
         {
             _configurationSection = configSection;
         }
