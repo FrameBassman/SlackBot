@@ -1,0 +1,8 @@
+version: '2'
+
+services:
+    setwallet_bot:
+        container_name: setwallet_bot
+        build:
+            context: .
+            dockerfile: ./Dockerfile
