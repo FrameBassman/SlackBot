@@ -1,14 +1,13 @@
-﻿using System.IO;
-using Common.Logging;
+﻿using Common.Logging;
 using Common.Logging.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using SetWalletBot.Core.Configuration;
+using SetWalletBot.Presentation.Slack.Configuration;
 
-namespace SetWalletBot.Core
+namespace SetWalletBot.Presentation.Slack
 {
     public class Startup
     {

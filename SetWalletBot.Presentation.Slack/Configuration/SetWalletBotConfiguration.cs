@@ -1,8 +1,8 @@
-﻿namespace SetWalletBot.Core.Configuration
+﻿using Noobot.Core.Configuration;
+using SetWalletBot.Toolbox.Middleware;
+
+namespace SetWalletBot.Presentation.Slack.Configuration
 {
-    using Noobot.Core.Configuration;
-    using Middleware;
-    
     public class ExampleConfiguration : ConfigurationBase
     {
         public ExampleConfiguration()

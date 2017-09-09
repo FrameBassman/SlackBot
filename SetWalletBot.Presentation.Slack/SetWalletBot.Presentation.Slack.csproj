@@ -12,4 +12,7 @@
     <PackageReference Include="Noobot.Toolbox" Version="3.0.0" />
     <PackageReference Include="Common.Logging" Version="3.4.1" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SetWalletBot.Toolbox\SetWalletBot.Toolbox.csproj" />
+  </ItemGroup>
 </Project>

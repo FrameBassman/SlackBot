@@ -3,9 +3,9 @@ using Common.Logging;
 using Noobot.Core;
 using Noobot.Core.Configuration;
 using Noobot.Core.DependencyResolution;
-using SetWalletBot.Core.Configuration;
+using SetWalletBot.Presentation.Slack.Configuration;
 
-namespace SetWalletBot.Core
+namespace SetWalletBot.Presentation.Slack
 {
     public class NoobotHost
     {
@@ -22,7 +22,6 @@ namespace SetWalletBot.Core
         public void Start(ILog log)
         {
             IContainerFactory containerFactory = new ContainerFactory(_configuration, _configReader, log);
-            //IContainerFactory containerFactory = new ContainerFactory(_configuration, _configReader);
             INoobotContainer container = containerFactory.CreateContainer();
             _noobotCore = container.GetNoobotCore();
 
