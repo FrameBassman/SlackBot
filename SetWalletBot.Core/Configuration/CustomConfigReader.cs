@@ -7,7 +7,7 @@ namespace SetWalletBot.Core.Configuration
 {
     public class CustomConfigReader : IConfigReader
     {
-        private IConfigurationSection _configurationSection;
+        private readonly IConfigurationSection _configurationSection;
         private const string SLACKAPI_CONFIGVALUE = "slack:apiToken";
         
         public CustomConfigReader(IConfigurationSection configSection)
@@ -17,10 +17,10 @@ namespace SetWalletBot.Core.Configuration
         
         public T GetConfigEntry<T>(string entryName)
         {
-            throw new NotImplementedException();
+            return _configurationSection.GetValue<T>(entryName);
         }
 
-        public string SlackApiKey => _configurationSection[SLACKAPI_CONFIGVALUE];
+        public string SlackApiKey => GetConfigEntry<string>(SLACKAPI_CONFIGVALUE);
         public bool HelpEnabled { get; set; } = true;
         public bool StatsEnabled { get; set; } = true;
         public bool AboutEnabled { get; set; } = true;
