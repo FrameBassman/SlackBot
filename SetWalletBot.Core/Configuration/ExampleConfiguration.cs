@@ -1,21 +1,13 @@
-﻿using Noobot.Core.Configuration;
-using Noobot.Toolbox.Middleware;
-using Noobot.Toolbox.Plugins;
-
-namespace SetWalletBot.Core.Configuration
+﻿namespace SetWalletBot.Core.Configuration
 {
+    using Noobot.Core.Configuration;
+    using Middleware;
+    
     public class ExampleConfiguration : ConfigurationBase
     {
         public ExampleConfiguration()
         {
-            UseMiddleware<WelcomeMiddleware>();
-//            UseMiddleware<JokeMiddleware>();
-//            UseMiddleware<CalculatorMiddleware>();
-//            UseMiddleware<FlickrMiddleware>();
-//            UseMiddleware<ScheduleMiddleware>();
-
-            //UsePlugin<JsonStoragePlugin>();
-            //UsePlugin<SchedulePlugin>();
+            UseMiddleware<JiraMiddleware>();
         }
     }
 }
