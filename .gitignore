@@ -269,6 +269,9 @@ __pycache__/
 
 # Cake - Uncomment if you are using it
 # tools/
-AwesomeApp\wwwroot\lib\*
+
+# Visual Studio Code files
 .vscode/
-appsettings.Production.json
+
+# Configs for transformation
+appsettings.*.json
