@@ -1,5 +1,5 @@
 ﻿using System;
-using Common.Logging;
+using Microsoft.Extensions.Logging;
 using Noobot.Core;
 using Noobot.Core.Configuration;
 using Noobot.Core.DependencyResolution;
@@ -19,7 +19,7 @@ namespace SetWalletBot.Presentation.Slack
             _configuration = new ExampleConfiguration();
         }
 
-        public void Start(ILog log)
+        public void Start(ILogger log)
         {
             IContainerFactory containerFactory = new ContainerFactory(_configuration, _configReader, log);
             INoobotContainer container = containerFactory.CreateContainer();
